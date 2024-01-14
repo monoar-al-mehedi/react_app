@@ -2,19 +2,19 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    // console.log("Uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
   };
 
   const handleLoClick = () => {
-    // console.log("Uppercase was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
   };
   const handleOnChange = (event) => {
-    // console.log("On Change");
     setText(event.target.value);
+  };
+  const handleClearClick = (event) => {
+    setText(" ");
   };
 
   const [text, setText] = useState("Enter text here");
@@ -37,14 +37,20 @@ export default function TextForm(props) {
         <button className="btn btn-info mx-2" onClick={handleLoClick}>
           Convert to Lowercase
         </button>
+        <button className="btn btn-success mx-2" onClick={handleClearClick}>
+          Clear Text
+        </button>
+        {/* <button className="btn btn-info mx-2" onClick={handleDownload}>
+          Dawnload teaxt
+        </button> */}
       </div>
       <div className="container my-3">
-        <h1>Your text summery</h1>
+        <h2>Your text summery</h2>
         <p>
           {text.split(" ").length} words and {text.length} Charecters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
-        <h2>Preview</h2>
+        <h3>Preview</h3>
         <p>{text}</p>
       </div>
     </>
